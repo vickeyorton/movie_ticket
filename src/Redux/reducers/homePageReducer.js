@@ -6,11 +6,16 @@ const HomePageReducer = (state = [], action) => {
           ...state,
           trend: action.payload,
         };
-        case "FETCH_TRENDING":
-        return {
-          ...state,
-          trend: action.payload,
-        }
+        // case "FETCH_TRENDING":
+        // return {
+        //   ...state,
+        //   trend: action.payload,
+        // }
+        case "GET_LATEST":
+          return {
+            ...state,
+            latest: action.payload,
+          };
   
       default:
         return {

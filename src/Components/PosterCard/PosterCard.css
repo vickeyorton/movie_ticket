@@ -1,0 +1,10 @@
+.movie-card{
+    margin:10px;
+}
+.poster-card .slick-list{
+    height: 340px;
+    width: calc(100vw - 130px)!important;
+}
+.poster-card .slick-list .slick-slide div{
+    margin:10px;
+}

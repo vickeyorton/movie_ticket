@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { GET_TRENDING, FETCH_TRENDING } from "../../Redux/actions";
+import {FETCH_TRENDING } from "../../Redux/actions";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
@@ -10,41 +10,17 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import './BannerCarousel.css';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-// const tutorialSteps = [
-//   {
-//     label: "San Francisco – Oakland Bay Bridge, United States",
-//     imgPath:
-//       "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-//   },
-//   {
-//     label: "Bird",
-//     imgPath:
-//       "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
-//   },
-//   {
-//     label: "Bali, Indonesia",
-//     imgPath:
-//       "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80",
-//   },
-//   {
-//     label: "NeONBRAND Digital Marketing, Las Vegas, United States",
-//     imgPath:
-//       "https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60",
-//   },
-//   {
-//     label: "Goč, Serbia",
-//     imgPath:
-//       "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-//   },
-// ];
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "100%",
+    maxWidth: "90%",
     flexGrow: 1,
+    margin:"auto",
   },
   header: {
     display: "flex",
@@ -64,10 +40,17 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     width: "100%",
   },
-  BannerCarousel_btn: {
-    top: "-250px",
+  BannerCarousel_btn_right: {
+    top: "-200px",
     color: "#fff",
     fontSize: "large",
+    right:'-82px'
+  },
+  BannerCarousel_btn_left: {
+    top: "-200px",
+    color: "#fff",
+    fontSize: "large",
+    left: '-82px'
   },
   BannerCarousel_indicator: {
     background: "rgb(18 18 18 / 0%)",
@@ -107,7 +90,7 @@ function BannerCarousel(props) {
   return (
     <div className={classes.root}>
       {props.carousel !== undefined ? (
-        <div>
+        <div style={{height:"400px"}}>
           <AutoPlaySwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={activeStep}
@@ -138,13 +121,13 @@ function BannerCarousel(props) {
             ))}
           </AutoPlaySwipeableViews>
           <Paper square elevation={0} className={classes.header}>
-            <Typography>
+            <div>
               <p className={classes.Banner_Title}>
                 {tutorialSteps[activeStep].title}
               </p>
               <p>Rating :{tutorialSteps[activeStep].vote_average}</p>
               <p>{tutorialSteps[activeStep].overview}</p>
-            </Typography>
+            </div>
           </Paper>
           <MobileStepper
             className={classes.BannerCarousel_indicator}
@@ -154,7 +137,7 @@ function BannerCarousel(props) {
             activeStep={activeStep}
             nextButton={
               <Button
-                className={classes.BannerCarousel_btn}
+                className={classes.BannerCarousel_btn_right}
                 size="small"
                 onClick={handleNext}
                 disabled={activeStep === tutorialSteps.length - 1}
@@ -169,7 +152,7 @@ function BannerCarousel(props) {
             }
             backButton={
               <Button
-                className={classes.BannerCarousel_btn}
+                className={classes.BannerCarousel_btn_left}
                 size="small"
                 onClick={handleBack}
                 disabled={activeStep === 0}

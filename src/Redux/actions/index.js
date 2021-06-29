@@ -1,6 +1,8 @@
 export const GET_TOPRATED = 'GET_TOPRATED';
 export const FETCH_TRENDING ='FETCH_TRENDING';
 export const GET_TRENDING = 'GET_TRENDING';
+export const GET_LATEST = 'GET_LATEST';
+export const FETCH_LATEST = 'FETCH_LATEST';
 export const GET_POPULAR ='GET_POPULAR';
 export const GET_ACTION = 'GET_ACTION';
 export const GET_KIDS = 'GET_KIDS';

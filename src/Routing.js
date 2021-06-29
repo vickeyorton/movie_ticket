@@ -5,7 +5,7 @@ import Home from './Components/Home';
 
 function Routing() {
     return (
-        <div>
+        <div style={{background:"#161616"}}>
             <Header/>
             <BrowserRouter>
                 <div>

@@ -12,8 +12,18 @@ function *fetchCarousel(){
     })
 }
 
+function *fetchLatest(){
+    let result = yield axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=${api_key}&language=en-US`)
+                .then(res=>res.data.results)
+    yield put({
+        type:"GET_LATEST",
+        payload: result
+    })
+}
+
 function *renderWatcher(){
     yield takeLatest('FETCH_TRENDING',fetchCarousel);
+    yield takeLatest('FETCH_LATEST',fetchLatest);
 }
 
 export default function *rootSaga(){
