@@ -1,10 +1,18 @@
+.poster-container{
+    display:flex;
+    margin:0px;
+    padding: 5px 60px;
+}
 .movie-card{
     margin:10px;
 }
 .poster-card .slick-list{
-    height: 340px;
+    height: 310px;
     width: calc(100vw - 130px)!important;
 }
 .poster-card .slick-list .slick-slide div{
     margin:10px;
+}
+.poster-card .slick-dots{
+    display: none ;
 }
