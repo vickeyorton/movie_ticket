@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(4),
     backgroundColor: "rgba(18,18,18,.7)",
     color: "#fff",
-    width: 500,
+    width: '40%',
     position: "absolute",
     top: 63,
   },
@@ -112,7 +112,7 @@ function BannerCarousel(props) {
                 {Math.abs(activeStep - index) <= 2 ? (
                   <img
                     className={classes.img}
-                    src={baseURL + step.poster_path}
+                    src={baseURL + step.backdrop_path}
                     alt={step.title}
                   />
                 ) : null}
@@ -122,7 +122,7 @@ function BannerCarousel(props) {
           <Paper square elevation={0} className={classes.header}>
             <div>
               <p className={classes.Banner_Title}>
-                {tutorialSteps[activeStep].title}
+                {tutorialSteps[activeStep].title ? tutorialSteps[activeStep].title : tutorialSteps[activeStep].name}
               </p>
               <p>Rating :{tutorialSteps[activeStep].vote_average}</p>
               <p>{tutorialSteps[activeStep].overview}</p>

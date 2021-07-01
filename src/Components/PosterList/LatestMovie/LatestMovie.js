@@ -1,8 +1,8 @@
 import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
-import { FETCH_LATEST } from '../../Redux/actions';
-import './LatestMovie.css';
-import PosterCard1 from '../PosterCard/PosterCard1';
+import { FETCH_LATEST } from '../../../Redux/actions';
+import '../PosterMovie.css';
+import PosterCard1 from '../../PosterCard/PosterCard1';
 
 function LatestMovie(props) {
     useEffect(() => {
@@ -10,8 +10,8 @@ function LatestMovie(props) {
     }, []);
 
     return (
-        <div className="latestMovie-section">
-            <p className="latestMovie-title">Latest Movies</p>
+        <div className="posterMovie-section">
+            <p className="posterMovie-title">Latest Movies</p>
             <PosterCard1 list={props.latest}/>
         </div>
     )

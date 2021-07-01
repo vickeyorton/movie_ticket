@@ -7,12 +7,19 @@
     margin:10px;
 }
 .poster-card .slick-list{
-    height: 310px;
+    /* height: 310px; */
     width: calc(100vw - 130px)!important;
 }
-.poster-card .slick-list .slick-slide div{
+.poster-card .slick-list .slick-slide div:first-child{
     margin:10px;
 }
 .poster-card .slick-dots{
     display: none ;
+}
+.poster-card .slick-slide .MuiCardActions-root{
+    padding: 0px !important;
+    background-color: #161616;
+}
+.poster-card .slick-slide .MuiCardActions-root button{
+    width:100%;
 }

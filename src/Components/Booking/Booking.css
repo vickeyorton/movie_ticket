@@ -1,0 +1,53 @@
+.booking-container{
+    padding: 0px 60px;
+    color: #fff;
+}
+.booking-movie-img img{
+    width: 100%;
+    height: 400px;
+}
+.booking-movie-detail{
+    position: absolute;
+    background: rgba(18,18,18,.7);
+    height: 400px;
+    width: 100%;
+    top: 64px;
+}
+.booking-movie-detail-block{
+    padding: 40px;
+}
+.booking-movie-title{
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    margin-top: 2px;
+    color: #fff;
+}
+.booking-movie-subinfo{
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+}
+.booking-movie-info{
+    margin-bottom: 50px;
+    line-height: 1.45;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: normal;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    max-height: 400px;
+    font-weight: 400;
+    max-width: 540px;
+}
+.movie-genre{
+    padding-left: 10px;
+}
+.movie-genre span:not(:last-child):after {
+    content: ", ";
+}
