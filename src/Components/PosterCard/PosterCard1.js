@@ -79,7 +79,7 @@ export const PosterCard1 = (props) => {
                 />
               </CardActionArea>
               <CardActions className="posterButton">
-                <Button variant="outlined" color="secondary" onClick={()=>booking({data})}>
+                <Button variant="outlined" color="secondary" onClick={()=>booking(data)}>
                   Books
                 </Button>
               </CardActions>

@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import HomePageReducer from "./homePageReducer";
+import BookingReducer from "./bookingReducer";
 
 const rootReducer = combineReducers({
-HomePageReducer
+HomePageReducer,
+BookingReducer
 });
 
 export default rootReducer;

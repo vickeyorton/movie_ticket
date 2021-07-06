@@ -1,11 +1,17 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./Booking.css";
 import Button from "@material-ui/core/Button";
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import BookingSteps from "../BookingSteps/BookingSteps";
+import {connect} from "react-redux";
+import {GET_MOVIE} from '../../Redux/actions';
 
 function Booking(props) {
   const imageBase = "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces";
+
+  useEffect(() => {
+    props.fetchMovie(props.location.movie);
+  }, []);
 
   return (
     <div className="booking-container">
@@ -13,27 +19,27 @@ function Booking(props) {
         <div>
           <div className="booking-movie-img">
             <img
-              src={imageBase + props.location.movie.data.backdrop_path}
-              alt={props.location.movie.data.title}
+              src={imageBase + props.location.movie.backdrop_path}
+              alt={props.location.movie.title}
             />
           </div>
           <div className="booking-movie-detail">
             <div className="booking-movie-detail-block">
               <div className="booking-movie-title">
-                {props.location.movie.data.title
-                  ? props.location.movie.data.title
-                  : props.location.movie.data.name}
+                {props.location.movie.title
+                  ? props.location.movie.title
+                  : props.location.movie.name}
               </div>
               <div className="booking-movie-subinfo">
                 <span>
                   Language :{" "}
-                  {props.location.movie.data.original_language === "en"
+                  {props.location.movie.original_language === "en"
                     ? "English"
-                    : props.location.movie.data.original_language}{" "}
+                    : props.location.movie.original_language}{" "}
                   .
                 </span>
                 <span>
-                  Popularity : {props.location.movie.data.popularity}K .
+                  Popularity : {props.location.movie.popularity}K .
                 </span>
 
                 {/* {props.location.movie.data.release_date ? (
@@ -44,8 +50,8 @@ function Booking(props) {
                   ""
                 )} */}
                 <span className="movie-genre">
-                  {props.location.movie.data.genre_ids
-                    ? props.location.movie.data.genre_ids.map((val) => (
+                  {props.location.movie.genre_ids
+                    ? props.location.movie.genre_ids.map((val) => (
                         <span key={val}>
                           {val === 28
                             ? "Action"
@@ -92,7 +98,7 @@ function Booking(props) {
                 </span>
               </div>
               <div className="booking-movie-info">
-                {props.location.movie.data.overview}
+                {props.location.movie.overview}
               </div>
               <div className="booking-price">
                 <Button
@@ -114,4 +120,13 @@ function Booking(props) {
   );
 }
 
-export default Booking;
+const mapDispatchToProps = (dispatch) =>{
+  // let movie = props.location.movie.data;
+    return{
+      fetchMovie:(movie) =>{
+        dispatch({type:GET_MOVIE, payload:movie})
+      }
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Booking);

@@ -18,3 +18,35 @@ label.MuiFormControlLabel-root {
 label.MuiFormControlLabel-root .MuiSvgIcon-root{
     font-size: 1.5rem !important;
 }
+
+/* Seat Booking */
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+/* .seat {
+    background-color: green !important;
+  }
+  
+  .seat--reserved {
+    background-color: gray !important   ;
+  }
+  
+  .seat--selected {
+    background-color: blue !important;
+  }
+  
+  .seat-picker {
+    margin: auto;
+  }
+  
+  .seat-picker__row {
+  }
+  
+  .seat-picker__row__number {
+  }
+  
+  div.blank {
+    display: none;
+  } */

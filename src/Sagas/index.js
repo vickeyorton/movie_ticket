@@ -75,6 +75,10 @@ function *fetchFiction(){
     })
 }
 
+// function *fetchSearch(){
+//     let result = yield axios.get(`https://api.themoviedb.org/3/search/movie?api_key=d25c184a3ec367335bb5e676d0280fcf&language=en-US&query=war&page=1&include_adult=false`)
+// }
+
 function *renderWatcher(){
     yield takeLatest('FETCH_TRENDING',fetchCarousel);
     yield takeLatest('FETCH_LATEST',fetchLatest);

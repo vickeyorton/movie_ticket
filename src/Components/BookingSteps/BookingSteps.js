@@ -13,8 +13,11 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import BookingSeats from "./BookingSeat";
+import {connect} from 'react-redux';
+import {GET_DATE,GET_SHOW} from "../../Redux/actions";
 
-export default function BookingSteps() {
+function BookingSteps(props) {
   // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState(
     new Date("2021-08-18T21:11:54")
@@ -23,10 +26,12 @@ export default function BookingSteps() {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    props.fetchDate(date);
   };
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    props.fetchShow(event.target.value);
   };
 
   const shows = [
@@ -43,6 +48,9 @@ export default function BookingSteps() {
     "10:00pm",
     "10:30pm",
   ];
+
+  
+
   return (
     <div className="bookingStep-bg">
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -75,6 +83,21 @@ export default function BookingSteps() {
           ))}
         </RadioGroup>
       </FormControl>
+
+      <BookingSeats/>
     </div>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    fetchDate:(date) =>{
+      dispatch({type:GET_DATE, payload:date})
+    },
+    fetchShow:(time) =>{
+      dispatch({type:GET_SHOW, payload:time})
+    }
+  }
+}
+
+export default connect(null,mapDispatchToProps)(BookingSteps);

@@ -14,3 +14,9 @@ export const FETCH_HORROR = 'FETCH_HORROR';
 export const GET_HORROR = 'GET_HORROR';
 export const FETCH_FICTION = 'FETCH_FICTION';
 export const GET_FICTION = 'GET_FICTION';
+
+export const GET_MOVIE = "GET_MOVIE";
+export const GET_DATE = "GET_DATE";
+export const GET_SHOW = "GET_SHOW";
+export const GET_SEATS = "GET_SEATS";
+export const SET_TICKET = "SET_TICKET";

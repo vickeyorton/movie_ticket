@@ -3,6 +3,7 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Home from './Components/Home';
 import Booking from './Components/Booking/Booking';
+import TicketPage from './Components/TicketPage/TicketPage';
 
 function Routing() {
     return (
@@ -14,6 +15,7 @@ function Routing() {
                     <Switch>
                         <Route path="/" exact component={Home}/>
                         <Route path="/detail" component={Booking}/>
+                        <Route path="/ticket" component={TicketPage} />
                     </Switch>
                 </div>
             </BrowserRouter>

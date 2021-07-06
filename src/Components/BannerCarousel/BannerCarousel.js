@@ -10,6 +10,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import './BannerCarousel.css';
+import { useHistory } from "react-router";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -67,7 +68,7 @@ function BannerCarousel(props) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const tutorialSteps = props.carousel;
-  //   const maxSteps = tutorialSteps.length;
+  const history = useHistory();
   const baseURL = "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces";
 
   useEffect(() => {
@@ -86,6 +87,13 @@ function BannerCarousel(props) {
     setActiveStep(step);
   };
 
+  const booking =(data) =>{
+    history.push({
+      pathname: '/detail',
+      movie: data,
+    });
+  }
+
   return (
     <div className={classes.root}>
       {props.carousel !== undefined ? (
@@ -96,24 +104,15 @@ function BannerCarousel(props) {
             onChangeIndex={handleStepChange}
             enableMouseEvents
           >
-            {/* {tutorialSteps.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <img
-                className={classes.img}
-                src={step.imgPath}
-                alt={step.label}
-              />
-            ) : null}
-          </div>
-        ))} */}
+            
             {props.carousel.map((step, index) => (
-              <div key={step.id}>
+              <div key={step.id} >
                 {Math.abs(activeStep - index) <= 2 ? (
                   <img
                     className={classes.img}
                     src={baseURL + step.backdrop_path}
                     alt={step.title}
+                    onClick={()=>booking(step)}
                   />
                 ) : null}
               </div>
@@ -126,6 +125,12 @@ function BannerCarousel(props) {
               </p>
               <p>Rating :{tutorialSteps[activeStep].vote_average}</p>
               <p>{tutorialSteps[activeStep].overview}</p>
+              <Button
+              variant="contained"
+              color="secondary"
+               onClick={()=>booking(tutorialSteps[activeStep])}>
+                Book
+              </Button>
             </div>
           </Paper>
           <MobileStepper

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -8,6 +8,11 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
-  homeLink:{
-    color:'#fff',
-    textDecoration:"none",
+  homeLink: {
+    color: "#fff",
+    textDecoration: "none",
   },
   search: {
     position: "relative",
@@ -73,7 +78,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const [search, setSearch] = useState("");
+  const [sresult, setSResult] = useState("");
+  const movieSearch = (e) => {
+    setSearch(e.target.value);
+    fetchResult();
+  };
+
+  const fetchResult = () => {
+    let result = axios
+      .get(
+        "https://api.themoviedb.org/3/search/movie?api_key=d25c184a3ec367335bb5e676d0280fcf&language=en-US&query=war&page=1&include_adult=false"
+      )
+      .then((res) => setSResult( res.data.results ));
+
+    ;
+    // console.log(sresult)
+  };
+
   const classes = useStyles();
+  const baseURL = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 
   return (
     <div className={classes.root}>
@@ -88,11 +112,9 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-          <Link to="/" className={classes.homeLink}>
-            
+            <Link to="/" className={classes.homeLink}>
               MovieHub
-            
-          </Link>
+            </Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -100,15 +122,34 @@ export default function Header() {
             </div>
             <InputBase
               placeholder="Search…"
+              value={search}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              onChange={(e) => movieSearch(e)}
               inputProps={{ "aria-label": "search" }}
             />
           </div>
         </Toolbar>
       </AppBar>
+      {sresult && (
+        <div className="search-drop">
+          {sresult.map((val) => {
+            <List component="nav" aria-label="secondary mailbox folders">
+            <ListItem button>
+              <ListItemText primary="Trash" />
+            </ListItem>
+            </List>
+            // <div className="search-list">
+            //   <div className="search-image">
+            //     <img src={baseURL + val.poster_path} alt={val.title} />
+            //   </div>
+            //   <div className="search-title">{val.title}</div>
+            // </div>;
+          })}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,10 @@
+https://api.themoviedb.org/3/movie/now_playing?api_key=d25c184a3ec367335bb5e676d0280fcf&language=en-US&page=1
+const request = {
+fetchTrending : 'https://api.themoviedb.org/3/trending/all/week?api_key=d25c184a3ec367335bb5e676d0280fcf&language=en-US',
+fetchTopRated : 'https://api.themoviedb.org/3/movie/top_rated?api_key=d25c184a3ec367335bb5e676d0280fcf&language=en-US',
+fetchPopular : 'https://api.themoviedb.org/3/movie/popular?api_key=d25c184a3ec367335bb5e676d0280fcf&language=en-US',
+fetchActionMovies : 'https://api.themoviedb.org/3/discover/movie?api_key=d25c184a3ec367335bb5e676d0280fcf&lwith_gernres=28',
+fetchKidsMovies : 'https://api.themoviedb.org/3/discover/movie?api_key=d25c184a3ec367335bb5e676d0280fcf&lwith_gernres=35',
+fetchHorrorMovies : 'https://api.themoviedb.org/3/discover/movie?api_key=d25c184a3ec367335bb5e676d0280fcf&lwith_gernres=27',
+fetchFictionMovies : 'https://api.themoviedb.org/3/discover/movie?api_key=d25c184a3ec367335bb5e676d0280fcf&lwith_gernres=878',
+}
